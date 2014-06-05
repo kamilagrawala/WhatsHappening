@@ -1,0 +1,75 @@
+package com.whatshappening;
+
+/* 
+ * Google Imports
+ */
+
+/*
+ *  Android Imports
+ */
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import android.os.AsyncTask;
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class GetAddressTask extends AsyncTask<Location, Void, String> {
+	Context mContext;
+	String addressText;
+	int test;
+
+	public GetAddressTask(Context context) {
+		super();
+		mContext = context;
+	}
+
+	@Override
+	protected String doInBackground(Location... params) {
+		Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+		test = params.length;
+		/*
+		 * Location loc = params[0]; List<Address> addresses = null; try {
+		 * addresses = geocoder.getFromLocation(loc.getLatitude(),
+		 * loc.getLongitude(), 1); } catch (IOException e1) {
+		 * Log.e("CurrentAddressActivity", "IO Exception in getFromLocation()");
+		 * e1.printStackTrace(); return
+		 * ("IO Exception trying to get the Adress"); } catch
+		 * (IllegalArgumentException e2) { String errorString =
+		 * "Illegal arguments " + Double.toString(loc.getLongitude()) + "," +
+		 * Double.toString(loc.getLatitude()) + "passed to service";
+		 * Log.e("CurrentAddressActivity", errorString); e2.printStackTrace();
+		 * return errorString; } // Reverse Geocode if (addresses != null &&
+		 * addresses.size() > 0) { // Get the first Address Address address =
+		 * addresses.get(0); /* Format the first line of address (if available),
+		 * city, and country name.
+		 */
+		/*
+		 * String addressText = String.format( "%s, %s, %s", // If there's a
+		 * street address, add it address.getMaxAddressLineIndex() > 0 ? address
+		 * .getAddressLine(0) : "", // Locality is usually a city
+		 * address.getLocality(), // The country of the address
+		 * address.getCountryName()); // Return the text return addressText; }
+		 * else { return "No address found"; }
+		 */return null;
+	}
+
+	protected void onPostExecute(String result) {
+		/*
+		 * Toast.makeText(mContext.getApplicationContext(), "Execution Done",
+		 * Toast.LENGTH_SHORT).show();
+		 */
+		Toast.makeText(mContext.getApplicationContext(),
+				"Params Length: " + Integer.toString(test), Toast.LENGTH_SHORT)
+				.show();
+	}
+}
